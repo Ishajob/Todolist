@@ -1,0 +1,48 @@
+﻿@page "/counter"
+@page "/counter3"
+@rendermode InteractiveServer
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
+<br /> <br />
+<label>Enter text: </label>
+<br />
+<input @onchange="InputChanged" />
+
+<p style="color:red">Press enter *</p>
+<p>@message</p>
+
+@code {
+    string message = "";
+
+    void InputChanged(ChangeEventArgs e)
+    {
+        message = (string)e.Value;
+    }
+}
+
+<br /> <br />
+<input @bind="text" />
+<button @onclick="() => text = string.Empty">Clear</button>
+<p>@text</p>
+
+@code {
+    string text = "";
+}
+
+<h2>@DateTime.Now</h2>
+<p>@DateTime.IsLeapYear(2023)</p>
